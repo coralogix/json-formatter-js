@@ -110,3 +110,9 @@ export function createElement(type: string, className?: string, content?: Elemen
   }
   return el;
 }
+
+export function highlight(search: string, value: string) {
+  if (typeof value !== "string" || !search) return value;
+  const re = new RegExp(search, 'gi');
+  return value.replace(re, `<span class="grep-highlight">$&</span>`)
+}

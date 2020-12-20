@@ -5,7 +5,7 @@ import {
   getValuePreview,
   getPreview,
   cssClass,
-  createElement
+  createElement, highlight
 } from './helpers';
 
 import './style.less';
@@ -64,6 +64,8 @@ export default class JSONFormatter {
    * rendered tree should expand. Set it to `0` to make the whole tree collapsed
    * or set it to `Infinity` to expand the tree deeply
    *
+   * @param query - allow search query highlight
+   *
    * @param {object} [config=defaultConfig] -
    *  defaultConfig = {
    *   hoverPreviewEnabled: false,
@@ -83,8 +85,8 @@ export default class JSONFormatter {
    *
    * @param {string} [key=undefined] The key that this object in it's parent
    * context
-  */
-  constructor(public json: any, private open = 1, private config: JSONFormatterConfiguration = _defaultConfig, private key?: string) {
+   */
+  constructor(public json: any, private open = 1, public query?: string, private config: JSONFormatterConfiguration = _defaultConfig, private key?: string) {
 
     // Setting default values for config object
     if (this.config.hoverPreviewEnabled === undefined) {
@@ -358,7 +360,8 @@ export default class JSONFormatter {
       }
 
       // Append value content to value element
-      value.innerHTML = getValuePreview(this.type, this.json, this.useToJSON ? this.json.toJSON() : this.json);
+      const previewValue = getValuePreview(this.type, this.json, this.useToJSON ? this.json.toJSON() : this.json);
+      value.innerHTML = highlight(this.query, previewValue)
 
       // append the value element to toggler link
       togglerLink.appendChild(value);
@@ -423,7 +426,7 @@ export default class JSONFormatter {
       let index = 0;
       const addAChild = ()=> {
         const key = this.keys[index];
-        const formatter = new JSONFormatter(this.json[key], this.open - 1, this.config, key);
+        const formatter = new JSONFormatter(this.json[key], this.open - 1, this.query, this.config, key);
         children.appendChild(formatter.render());
 
         index += 1;
@@ -441,7 +444,7 @@ export default class JSONFormatter {
 
     } else {
       this.keys.forEach(key => {
-        const formatter = new JSONFormatter(this.json[key], this.open - 1, this.config, key);
+        const formatter = new JSONFormatter(this.json[key], this.open - 1, this.query, this.config, key);
         children.appendChild(formatter.render());
       });
     }

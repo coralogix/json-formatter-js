@@ -343,8 +343,9 @@ export default class JSONFormatter {
     // Primitive values
     } else {
 
+
       // make a value holder element
-      const value = this.isUrl ? createElement('a') : createElement('span');
+      const value = this.isUrl ? createElement('a') : createElement('div');
 
       // add type and other type related CSS classes
       value.classList.add(cssClass(this.type));
@@ -357,8 +358,7 @@ export default class JSONFormatter {
       }
 
       // Append value content to value element
-      const valuePreview = getValuePreview(this.type, this.json, this.useToJSON ? this.json.toJSON() : this.json);
-      value.appendChild(document.createTextNode(valuePreview));
+      value.innerHTML = getValuePreview(this.type, this.json, this.useToJSON ? this.json.toJSON() : this.json);
 
       // append the value element to toggler link
       togglerLink.appendChild(value);

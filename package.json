@@ -1,7 +1,7 @@
 {
-  "name": "json-formatter-js",
-  "version": "2.3.4",
-  "description": "JSON Formatter core library ",
+  "name": "@coralogix/json-formatter",
+  "version": "0.0.1",
+  "description": "Coralogix JSON Formatter library Clone ",
   "main": "dist/json-formatter.cjs.js",
   "module": "dist/json-formatter.esm.js",
   "browser": "dist/json-formatter.umd.js",
@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mohsen1/json-formatter-js.git"
+    "url": "git+https://github.com/coralogix/json-formatter-js.git"
   },
   "keywords": [
     "json"
@@ -35,9 +35,9 @@
   "author": "Mohsen Azimi <me@azimi.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mohsen1/json-formatter-js/issues"
+    "url": "https://github.com/coralogix/json-formatter-js/issues"
   },
-  "homepage": "https://github.com/mohsen1/json-formatter-js#readme",
+  "homepage": "https://github.com/coralogix/json-formatter-js#readme",
   "devDependencies": {
     "@types/jest": "^24.0.19",
     "css-loader": "^3.2.0",

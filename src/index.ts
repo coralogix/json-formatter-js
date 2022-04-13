@@ -208,7 +208,7 @@ export default class JSONFormatter {
    * get object keys
    * If there is an empty key we pad it wit quotes to make it visible
   */
-  private get keys(): string[] { 
+  private get keys(): string[] {
     if (this.isObject) {
       const keys = Object.keys(this.json)
       return (!this.isArray && this.config.sortPropertiesBy)
@@ -347,7 +347,7 @@ export default class JSONFormatter {
 
 
       // make a value holder element
-      const value = this.isUrl ? createElement('a') : createElement('div');
+      const value = this.isUrl ? createElement('a') : createElement('span');
 
       // add type and other type related CSS classes
       value.classList.add(cssClass(this.type));

@@ -1,2 +1,6 @@
 .git
+.github
+mocks
+test
 src
+!dist/src

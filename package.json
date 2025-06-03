@@ -1,5 +1,5 @@
 {
-  "name": "@coralogix/json-formatter",
+  "name": "@cx/json-formatter",
   "version": "0.0.2",
   "description": "Coralogix JSON Formatter library Clone ",
   "main": "dist/json-formatter.cjs.js",

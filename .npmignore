@@ -4,3 +4,13 @@ mocks
 test
 src
 !dist/src
+.idea
+node_modules
+rollup.*
+*.yml
+*.tgz
+demo
+index.html
+tsconfig.json
+webpack.config.js
+server.js

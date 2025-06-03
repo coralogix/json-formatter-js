@@ -1,6 +1,6 @@
 {
-  "name": "@coralogix/json-formatter",
-  "version": "0.0.2",
+  "name": "@cx/json-formatter",
+  "version": "0.0.1",
   "description": "Coralogix JSON Formatter library Clone ",
   "main": "dist/json-formatter.cjs.js",
   "module": "dist/json-formatter.esm.js",

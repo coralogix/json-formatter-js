@@ -5,6 +5,13 @@ function escapeString(str: string): string {
   return str.replace(/"/g, '\\"');
 }
 
+/*
+ * Replace \n with <br />
+*/
+function replaceBackslashN(str: string): string {
+  return str.replace(/\\n/g, "<br />");
+}
+
 export function getType(value: any): string {
   if (value === null) {
     return "null";
@@ -59,6 +66,7 @@ export function getValuePreview(
 
   if (type === "string" || type === "stringifiable") {
     value = '"' + escapeString(value) + '"';
+    value = replaceBackslashN(value)
   }
   if (type === "function") {
     // Remove content of the function
@@ -103,6 +111,7 @@ export function createElement(
   content?: Element | string,
 ): Element {
   const el = document.createElement(type);
+
   if (className) {
     el.classList.add(cssClass(className));
   }
@@ -114,4 +123,10 @@ export function createElement(
     }
   }
   return el;
+}
+
+export function highlight(search: string, value: string) {
+  if (typeof value !== "string" || !search) return value;
+  const re = new RegExp(search, 'gi');
+  return value.replace(re, `<span class="grep-highlight">$&</span>`)
 }

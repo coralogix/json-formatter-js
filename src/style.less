@@ -44,7 +44,7 @@
   .json-formatter-string,
   .json-formatter-stringifiable {
     color: @string-color;
-    white-space: pre;
+    white-space: pre-wrap;
     word-wrap: break-word;
   }
   .json-formatter-number {
@@ -61,9 +61,6 @@
   }
   .json-formatter-function {
     color: @function-color;
-  }
-  .json-formatter-date {
-    background-color: fade(@default-color, 5%);
   }
   .json-formatter-url {
     text-decoration: underline;
@@ -134,7 +131,7 @@
 .json-formatter-dark.json-formatter-row {
   .theme(
     @default-color: white,
-    @string-color: #31f031,
+    @string-color: #c0c7c7,
     @number-color: #66c2ff,
     @boolean-color: #EC4242,
     @null-color: #EEC97D,
@@ -147,3 +144,8 @@
     @key-color: #23a0db,
     @url-color: #027bff);
 }
+
+.grep-highlight {
+  color: #ff6e67;
+}
+

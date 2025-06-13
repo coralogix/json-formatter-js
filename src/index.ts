@@ -6,7 +6,8 @@ import {
   getPreview,
   cssClass,
   createElement,
-} from "./helpers";
+  highlight,
+} from './helpers';
 
 import "./style.less";
 
@@ -73,6 +74,8 @@ export default class JSONFormatter {
    * rendered tree should expand. Set it to `0` to make the whole tree collapsed
    * or set it to `Infinity` to expand the tree deeply
    *
+   * @param query - allow search query highlight
+   *
    * @param {object} [config=defaultConfig] -
    *  defaultConfig = {
    *   hoverPreviewEnabled: false,
@@ -100,6 +103,7 @@ export default class JSONFormatter {
   constructor(
     public json: any,
     private open = 1,
+    public query?: string,
     private config: JSONFormatterConfiguration = _defaultConfig,
     private key?: string,
     private displayKey?: string,
@@ -448,7 +452,7 @@ export default class JSONFormatter {
         this.json,
         this.useToJSON ? this.json.toJSON() : this.json,
       );
-      value.appendChild(document.createTextNode(valuePreview));
+      value.innerHTML = highlight(this.query, valuePreview)
 
       // append the value element to toggler link
       togglerLink.appendChild(value);
@@ -531,6 +535,7 @@ export default class JSONFormatter {
       const formatter = new JSONFormatter(
         json,
         this.open - 1,
+        this.query,
         this.config,
         key,
         displayKey,
